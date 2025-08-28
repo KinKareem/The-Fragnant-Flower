@@ -1,0 +1,419 @@
+/* Import font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Zen+Kaku+Gothic+New&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.judul-section {
+    color: #000;
+    font-size: clamp(22px, 5vw, 40px);
+    font-weight: 500;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    font-family: 'Cinzel', cursive;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    text-shadow:
+        2px 2px 4px rgba(216, 207, 234, 0.9),
+        -2px -2px 4px rgba(215, 244, 255, 0.9);
+}
+
+/* Mobile Version */
+@media (max-width: 768px) {
+    .judul-section {
+        font-weight: 600;
+        text-shadow:
+            1px 1px 3px rgba(216, 207, 234, 0.7),
+            -1px -1px 3px rgba(215, 244, 255, 0.7);
+        padding: 20px;
+    }
+}
+
+
+/* -------------------------------------Paralax----------------------------- */
+
+.parallax {
+    position: relative;
+    background-image: url("assets/Background.png");
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+}
+
+.parallax .content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .parallax {
+        background-attachment: scroll;
+        min-height: 70vh;
+    }
+}
+
+
+.side-label-right,
+.side-label-left {
+    position: fixed;
+    transform: translateY(-50%);
+    background: white;
+    font-size: clamp(14px, 2vw, 25px);
+    /* responsive font */
+    font-weight: 600;
+    padding: clamp(8px, 1.5vw, 15px) clamp(6px, 1.2vw, 10px);
+    border-radius: 50px;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+.side-label-right {
+    bottom: -100px;
+    right: 10px;
+    color: #A4D3FF;
+    text-shadow: 2px 2px 4px rgba(190, 106, 255, 0.3);
+}
+
+.side-label-left {
+    top: 290px;
+    left: 10px;
+    color: #BE6AFF;
+    text-shadow: 2px 2px 4px rgba(164, 211, 255, 0.4);
+}
+
+/* Responsif untuk tablet */
+@media (max-width: 900px) {
+    .side-label-right {
+        bottom: -60px;
+        right: 5px;
+    }
+
+    .side-label-left {
+        top: 220px;
+        left: 5px;
+    }
+}
+
+/* Responsif untuk HP */
+@media (max-width: 600px) {
+    .side-label-right {
+        bottom: -70px;
+        font-size: 14px;
+        padding: 6px 4px;
+    }
+
+    .side-label-left {
+        top: 210px;
+        font-size: 14px;
+        padding: 6px 4px;
+    }
+}
+
+
+/* ---------------------- Header --------------------------------*/
+.header {
+    position: fixed;
+    height: 60px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #cafff6, #fff, #e5d0ff);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 80px;
+
+}
+
+.nav a {
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    font-size: 25px;
+    font-weight: 400;
+    padding: 5px 25px;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    font-family: 'Cinzel Decorative', cursive;
+    text-shadow:
+        2px 2px 4px #D8CFEA,
+        -2px -2px 4px #D7F4FF;
+}
+
+nav a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    background: #8fe8f7;
+    /* warna sama */
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    background: #c9a5ff;
+    /* warna sama */
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+nav a::before {
+    left: -15px;
+}
+
+nav a::after {
+    right: -15px;
+}
+
+nav a.active::before,
+nav a.active::after {
+    opacity: 1;
+}
+
+/* ---------------------------------Pengaturan Section----------------------------------------- */
+section {
+    min-height: 90vh;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    section {
+        padding: 20px 15px;
+    }
+
+    section .section-wrapper {
+        max-width: 90%;
+        /* biar gak terlalu sempit */
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+    section {
+        padding: 40px 12px;
+    }
+
+    section .section-wrapper {
+        max-width: 100%;
+    }
+}
+
+/* -------------------------------CHARACTER------------------------------------ */
+#character {
+    background: #fef6ff;
+    min-height: 84vh;
+}
+
+.character-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* default 2 kolom */
+    grid-gap: 20px;
+    max-width: 1600px;
+    margin: auto;
+}
+
+.character-card {
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+}
+
+.card-person {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .character-container {
+        grid-template-columns: 1fr;
+        /* jadi 1 kolom */
+    }
+
+    .character-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-person {
+        max-width: 330px;
+    }
+}
+
+/* -------------------------------DESCRIPTION------------------------------------ */
+#description {
+    background: #f0faff;
+}
+
+.description-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    margin: 30px 0;
+    font-family: "Poppins", Arial, sans-serif;
+    flex-wrap: wrap;
+    padding-left: 50px;
+}
+
+.description-container aside {
+    flex: 0 0 430px;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.description-container aside:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.description-container .poster-anime {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.description-container .judul-anime {
+    background: linear-gradient(90deg, #0d47a1, #1976d2);
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    font-size: clamp(16px, 2vw, 18px);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.description-container .info-anime {
+    flex: 1;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    max-width: 100%;
+}
+
+.description-container .info-anime:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.description-container .info-anime h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: clamp(18px, 2.2vw, 22px);
+    color: #0d47a1;
+}
+
+.description-container .info-anime p {
+    margin: 10px 0;
+    line-height: 1.6;
+    font-size: clamp(14px, 1.5vw, 15px);
+    color: #333;
+}
+
+.description-container .info-anime strong {
+    color: #1976d2;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .description-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .description-container aside {
+        flex: unset;
+        width: 65%;
+        margin-bottom: 20px;
+    }
+
+    .description-container .info-anime {
+        width: 65%;
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+    .description-container aside {
+        padding: 0;
+        width: 350px;
+    }
+
+    .description-container .info-anime {
+        width: 350px;
+        padding: 18px;
+    }
+
+    .description-container .judul-anime {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .description-container .info-anime h2 {
+        font-size: 18px;
+    }
+
+    .description-container .info-anime p {
+        font-size: 14px;
+    }
+}
+
+
+
+/* --------------------------HIGHLIGHT-------------------------------------- */
+#highlight {
+    background: #fff7f0;
+}
