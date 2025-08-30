@@ -6,12 +6,14 @@ const dotsContainer = document.querySelector('.dots');
 let index = 0;
 let dots = [];
 
+// Menampilkan jumlah card berdasarkan ukuran layar
 function getVisibleCount() {
-    if (window.innerWidth <= 600) return 1;   // HP
-    if (window.innerWidth <= 1024) return 2;  // Tablet
-    return 3;                                 // Desktop
+    if (window.innerWidth <= 600) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
 }
 
+// Memperbarui posisi slider dan status dot
 function updateSlider() {
     const cardWidth = track.querySelector('.video-card').offsetWidth + 25; // gap
     track.style.transform = `translateX(-${index * cardWidth}px)`;
@@ -21,6 +23,7 @@ function updateSlider() {
     if (dots[pageIndex]) dots[pageIndex].classList.add('active');
 }
 
+// Membuat Navigasi Dots
 function generateDots() {
     dotsContainer.innerHTML = "";
     const totalVideos = track.children.length;
@@ -38,11 +41,11 @@ function generateDots() {
         dots.push(dot);
     }
 }
-
 // Init
 generateDots();
 updateSlider();
 
+// Pengaturan tombol next & prev
 nextBtn.addEventListener('click', () => {
     if (index < track.children.length - getVisibleCount()) {
         index += getVisibleCount();

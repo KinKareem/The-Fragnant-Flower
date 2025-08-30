@@ -3,6 +3,7 @@ const sections = document.querySelectorAll("section");
 
 const headerOffset = 50;
 
+// Fungsi untuk scroll Section
 function onScroll() {
     let scrollPos = window.scrollY + headerOffset;
 
