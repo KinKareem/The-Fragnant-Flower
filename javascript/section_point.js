@@ -1,11 +1,8 @@
-// ambil semua link navbar & section
 const navLinks = document.querySelectorAll(".nav-link");
 const sections = document.querySelectorAll("section");
 
-// tinggi header (disesuaikan dengan CSS header)
-const headerOffset = 70;
+const headerOffset = 50;
 
-// fungsi cek posisi scroll
 function onScroll() {
     let scrollPos = window.scrollY + headerOffset;
 
@@ -20,6 +17,19 @@ function onScroll() {
     });
 }
 
-// jalankan saat scroll & load awal
+// Memberikan Efek Smooth scroll
+navLinks.forEach((link, i) => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetSection = sections[i];
+        const targetPos = targetSection.offsetTop - headerOffset;
+
+        window.scrollTo({
+            top: targetPos,
+            behavior: "smooth"
+        });
+    });
+});
+
 window.addEventListener("scroll", onScroll);
 window.addEventListener("load", onScroll);
