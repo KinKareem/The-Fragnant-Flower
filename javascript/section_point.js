@@ -2,14 +2,20 @@
 const navLinks = document.querySelectorAll(".nav-link");
 const sections = document.querySelectorAll("section");
 
+// tinggi header (disesuaikan dengan CSS header)
+const headerOffset = 70;
+
 // fungsi cek posisi scroll
 function onScroll() {
-    let scrollPos = window.scrollY + 150; // tambahkan offset
+    let scrollPos = window.scrollY + headerOffset;
 
     sections.forEach((section, i) => {
-        if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+        let top = section.offsetTop;
+        let bottom = top + section.offsetHeight;
+
+        if (scrollPos >= top && scrollPos < bottom) {
             navLinks.forEach(link => link.classList.remove("active"));
-            navLinks[i].classList.add("active");
+            if (navLinks[i]) navLinks[i].classList.add("active");
         }
     });
 }
