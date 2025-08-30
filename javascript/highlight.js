@@ -7,22 +7,22 @@ let index = 0;
 let dots = [];
 
 function getVisibleCount() {
-    if (window.innerWidth <= 600) return 1;  // HP
-    if (window.innerWidth <= 1024) return 2; // Tablet
-    return 3;                                // Desktop
+    if (window.innerWidth <= 600) return 1;   // HP
+    if (window.innerWidth <= 1024) return 2;  // Tablet
+    return 3;                                 // Desktop
 }
 
 function updateSlider() {
-    const cardWidth = track.querySelector('.video-card').offsetWidth + 25; // +gap
+    const cardWidth = track.querySelector('.video-card').offsetWidth + 25; // gap
     track.style.transform = `translateX(-${index * cardWidth}px)`;
 
-    dots.forEach(dot => dot.classList.remove('active'));
     const pageIndex = Math.floor(index / getVisibleCount());
+    dots.forEach(dot => dot.classList.remove('active'));
     if (dots[pageIndex]) dots[pageIndex].classList.add('active');
 }
 
 function generateDots() {
-    dotsContainer.innerHTML = ""; // reset dots
+    dotsContainer.innerHTML = "";
     const totalVideos = track.children.length;
     const totalPages = Math.ceil(totalVideos / getVisibleCount());
 
@@ -39,7 +39,7 @@ function generateDots() {
     }
 }
 
-// Inisialisasi
+// Init
 generateDots();
 updateSlider();
 
@@ -58,7 +58,7 @@ prevBtn.addEventListener('click', () => {
 });
 
 window.addEventListener('resize', () => {
-    index = 0; // reset ke awal kalau resize
+    index = 0;
     generateDots();
     updateSlider();
 });
